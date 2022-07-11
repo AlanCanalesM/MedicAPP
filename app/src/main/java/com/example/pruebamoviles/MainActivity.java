@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btninicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iniciarSesion("https://loncheriasftw.000webhostapp.com/loncheria/inicioSesion.php");
+                iniciarSesion("http://localhost/MedicApp/login.php");
             }
         });
 

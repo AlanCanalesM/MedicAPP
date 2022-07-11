@@ -44,8 +44,8 @@ public class MapaFarmacia extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng MiCasa = new LatLng(20.106302, -98.726282);
+        mMap.addMarker(new MarkerOptions().position(MiCasa).title("Marcador en casa"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(MiCasa));
     }
 }
