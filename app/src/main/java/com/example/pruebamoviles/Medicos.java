@@ -23,7 +23,7 @@ import java.util.List;
 public class Medicos extends AppCompatActivity {
 
     private RecyclerView recyclerMedicos;
-    private recyclerMedicosAdapter recyclerMedicosAdapter;
+    private recyclerMedicosAdapter recyclerMedicosAdapter1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class Medicos extends AppCompatActivity {
 
         recyclerMedicos=(RecyclerView)findViewById(R.id.recyclerMedicos);
         recyclerMedicos.setLayoutManager(new LinearLayoutManager(this));
-        MostrarMedicos("http://localhost/MedicApp/mostrarMedicos.php");
+        MostrarMedicos("http://192.168.100.123/MedicApp/mostrarMedicos.php");
 
     }
 
@@ -57,8 +57,8 @@ public class Medicos extends AppCompatActivity {
 
                     }
 
-                    recyclerMedicosAdapter = new recyclerMedicosAdapter(medicos);
-                    recyclerMedicos.setAdapter(recyclerMedicosAdapter);
+                    recyclerMedicosAdapter1 = new recyclerMedicosAdapter(medicos);
+                    recyclerMedicos.setAdapter(recyclerMedicosAdapter1);
 
 
                 } catch (JSONException e) {
