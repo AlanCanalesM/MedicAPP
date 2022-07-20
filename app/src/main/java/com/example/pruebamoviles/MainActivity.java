@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.an.biometric.BiometricCallback;
+import com.an.biometric.BiometricManager;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BiometricCallback {
 
     Button btninicio;
     TextInputEditText txtCorreo;
@@ -43,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
                 iniciarSesion("http://192.168.100.123/MedicApp/login.php");
             }
         });
+
+        new BiometricManager.BiometricBuilder(MainActivity.this)
+                .setTitle("Add a title")
+                .setSubtitle("Add a subtitle")
+                .setDescription("Add a description")
+                .setNegativeButtonText("Add a cancel button")
+                .build()
+                .authenticate(MainActivity.this);
+
 
 
     }
@@ -84,4 +95,53 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    public void onSdkVersionNotSupported() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationNotSupported() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationNotAvailable() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationPermissionNotGranted() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationInternalError(String error) {
+
+    }
+
+    @Override
+    public void onAuthenticationFailed() {
+
+    }
+
+    @Override
+    public void onAuthenticationCancelled() {
+
+    }
+
+    @Override
+    public void onAuthenticationSuccessful() {
+
+    }
+
+    @Override
+    public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
+
+    }
+
+    @Override
+    public void onAuthenticationError(int errorCode, CharSequence errString) {
+
+    }
 }
