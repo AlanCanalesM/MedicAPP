@@ -32,7 +32,7 @@ public class Medicos extends AppCompatActivity {
 
         recyclerMedicos=(RecyclerView)findViewById(R.id.recyclerMedicos);
         recyclerMedicos.setLayoutManager(new LinearLayoutManager(this));
-        MostrarMedicos("http://192.168.100.123/MedicApp/mostrarMedicos.php");
+        MostrarMedicos("http://192.168.100.11/MedicApp/mostrarMedicos.php");
 
     }
 

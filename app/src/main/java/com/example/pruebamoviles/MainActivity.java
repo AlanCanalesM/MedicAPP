@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
 
@@ -30,23 +33,33 @@ import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btninicio;
-    TextInputEditText txtCorreo;
-    TextInputEditText txtPass;
+    Button btninicio, btnregistrar;
+    EditText txtCorreo;
+    EditText txtPass;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login);
         btninicio=(Button) findViewById(R.id.BTinicio);
-        txtCorreo=(TextInputEditText) findViewById(R.id.ETcorreo);
-        txtPass=(TextInputEditText) findViewById(R.id.ETpass);
+        txtCorreo= (EditText) findViewById(R.id.ETcorreo);
+        txtPass= (EditText) findViewById(R.id.ETpass);
+        btnregistrar=(Button)findViewById(R.id.button2);
 
         btninicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iniciarSesion("http://192.168.100.123/MedicApp/login.php");
+                iniciarSesion("http://192.168.100.11/MedicApp/login.php");
+            }
+        });
+
+        btnregistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent re=new Intent(getApplicationContext(), ActivityRegistrar.class);
+                startActivity(re);
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);
             }
         });
 
@@ -54,6 +67,54 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void acticarHuella(){
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Por favor verifica tu huella dactilar")
+                .setDescription("Usar tu autenticacion biometrica es necesaria")
+                .setNegativeButtonText("Cancelar")
+                .build();
+        getPrompt().authenticate(promptInfo);
+
+    }
+
+    private BiometricPrompt getPrompt(){
+        Executor executor = ContextCompat.getMainExecutor(this);
+        BiometricPrompt.AuthenticationCallback callback = new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                notifyUser(errString.toString());
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                notifyUser("Autenticacion exitosa!");
+
+                Intent i = new Intent(getApplicationContext(), MainActivity2.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                notifyUser("Autenticacion fallida!");
+                /*Intent i2 = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i2);
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);*/
+            }
+        };
+
+        BiometricPrompt biometricPrompt = new BiometricPrompt(this, executor, callback);
+        return biometricPrompt;
+    }
+
+    private void notifyUser(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -64,8 +125,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
 
                 if(!response.isEmpty()){
-                    Intent i=new Intent(getApplicationContext(), MainActivity2.class);
-                    startActivity(i);
+                    acticarHuella();
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Credenciales erroneas", Toast.LENGTH_LONG).show();

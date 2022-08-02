@@ -28,6 +28,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(), Medicos.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
             }
         });
 
@@ -36,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent s=new Intent(getApplicationContext(), MapaFarmacia.class);
                 startActivity(s);
+                overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
             }
         });
 

@@ -8,16 +8,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="120"
-        android:layout_height="120"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/User" />
+        android:src="@mipmap/ic_launcher" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/ETcorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -25,15 +25,15 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Usuario"
+        android:textColorHint="@color/colorPrimary"
         android:inputType="textPersonName"
-        android:text="Usuario"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/ETpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -41,15 +41,15 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Contraseña"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="@color/colorPrimary"
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/ETcorreo" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/BTinicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -60,7 +60,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/ETpass" />
 
     <Button
         android:id="@+id/button2"
@@ -75,5 +75,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/BTinicio" />
 </androidx.constraintlayout.widget.ConstraintLayout>
