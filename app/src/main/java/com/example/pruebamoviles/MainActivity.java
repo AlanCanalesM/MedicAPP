@@ -2,15 +2,18 @@ package com.example.pruebamoviles;
 
 import android.content.Intent;
 
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.core.content.ContextCompat;
+
 
 import com.an.biometric.BiometricCallback;
-import com.an.biometric.BiometricManager;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,9 +25,10 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executor;
 
 
-public class MainActivity extends AppCompatActivity implements BiometricCallback {
+public class MainActivity extends AppCompatActivity {
 
     Button btninicio;
     TextInputEditText txtCorreo;
@@ -46,13 +50,7 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
             }
         });
 
-        new BiometricManager.BiometricBuilder(MainActivity.this)
-                .setTitle("Add a title")
-                .setSubtitle("Add a subtitle")
-                .setDescription("Add a description")
-                .setNegativeButtonText("Add a cancel button")
-                .build()
-                .authenticate(MainActivity.this);
+
 
 
 
@@ -95,53 +93,5 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
         requestQueue.add(stringRequest);
     }
 
-    @Override
-    public void onSdkVersionNotSupported() {
 
-    }
-
-    @Override
-    public void onBiometricAuthenticationNotSupported() {
-
-    }
-
-    @Override
-    public void onBiometricAuthenticationNotAvailable() {
-
-    }
-
-    @Override
-    public void onBiometricAuthenticationPermissionNotGranted() {
-
-    }
-
-    @Override
-    public void onBiometricAuthenticationInternalError(String error) {
-
-    }
-
-    @Override
-    public void onAuthenticationFailed() {
-
-    }
-
-    @Override
-    public void onAuthenticationCancelled() {
-
-    }
-
-    @Override
-    public void onAuthenticationSuccessful() {
-
-    }
-
-    @Override
-    public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
-
-    }
-
-    @Override
-    public void onAuthenticationError(int errorCode, CharSequence errString) {
-
-    }
 }

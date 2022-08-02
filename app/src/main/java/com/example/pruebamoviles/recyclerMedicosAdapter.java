@@ -37,9 +37,9 @@ public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicos
 
         public ViewHolder(View itemView){
             super(itemView);
-            tvMedNom=(TextView) itemView.findViewById(R.id.tvMedNom);
-            tvMedEsp=(TextView) itemView.findViewById(R.id.tvMedEsp);
-            imagenMed=(ImageView) itemView.findViewById(R.id.imagenMed);
+            tvMedNom=(TextView) itemView.findViewById(R.id.nombreMed);
+            tvMedEsp=(TextView) itemView.findViewById(R.id.especialidadMed);
+            imagenMed=(ImageView) itemView.findViewById(R.id.imgMed);
         }
 
 
@@ -54,7 +54,7 @@ public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicos
     @NonNull
     @Override
     public recyclerMedicosAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_medico, viewGroup, false);
+        View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_medicos, viewGroup, false);
         recyclerMedicosAdapter.ViewHolder viewHolder=new recyclerMedicosAdapter.ViewHolder(view);
         //view.setOnClickListener((View.OnClickListener) this);
         return viewHolder;
