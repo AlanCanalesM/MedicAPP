@@ -35,7 +35,7 @@ public class Medico_Datos extends AppCompatActivity {
     TextView txtCedula;
     TextView txtTelefono;
 
-    Button btnLlamar = findViewById(R.id.btnCall);
+
     //private RecyclerView recyclerMedicos;
 
     @Override
@@ -43,7 +43,7 @@ public class Medico_Datos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medico_datos);
 
-
+        Button btnLlamar = findViewById(R.id.btnCall);
         Bundle bolsa = getIntent().getExtras();
 
         txtNombre = (TextView) findViewById(R.id.txtNombre);
@@ -59,12 +59,23 @@ public class Medico_Datos extends AppCompatActivity {
         txtTelefono.setText(bolsa.getString("telefono"));
 
 
+        btnLlamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phone = "tel:7721414690";
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(phone));
+                startActivity(intent);
+                //Toast.makeText(Medico_Datos.this, "Datos"+ medicos.get
+                    //    (btnLlamar.getCh).show();
 
-        MostrarMedicos("http://192.168.1.67/MedicApp/mostrarMedicos.php");
+            }
+        });
+        //MostrarMedicos("http://192.168.1.67/MedicApp/mostrarMedicos.php");
 
 
     }
-
+/*
     public void MostrarMedicos(String URL) {
 
         List<MedicoModelo> medicos = new ArrayList<>();
@@ -89,18 +100,7 @@ public class Medico_Datos extends AppCompatActivity {
 
                     }
 
-                    btnLlamar.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            //String phone = "7721414690";
-                            //Intent intent = new Intent(Intent.ACTION_DIAL);
-                            //intent.setData(Uri.parse(phone));
-                            //startActivity(intent);
-                             Toast.makeText(Medico_Datos.this, "Datos"+ medicos.get
-                                 (btnLlamar.getCh).show();
 
-                        }
-                    });
 
 
                 } catch (JSONException e) {
@@ -118,5 +118,5 @@ public class Medico_Datos extends AppCompatActivity {
 
     }
 
-
+*/
 }
