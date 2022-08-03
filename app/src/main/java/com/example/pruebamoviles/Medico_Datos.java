@@ -62,9 +62,9 @@ public class Medico_Datos extends AppCompatActivity {
         btnLlamar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = "tel:7721414690";
+                String phone = bolsa.getString("telefono");
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(phone));
+                intent.setData(Uri.parse("tel:"+phone));
                 startActivity(intent);
                 //Toast.makeText(Medico_Datos.this, "Datos"+ medicos.get
                     //    (btnLlamar.getCh).show();

@@ -50,16 +50,20 @@ public class MainActivity extends AppCompatActivity {
         btninicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iniciarSesion("http://192.168.1.67/MedicApp/login.php");
+                iniciarSesion("http://192.168.100.11/MedicApp/login.php");
             }
         });
 
         btnregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent re=new Intent(getApplicationContext(), ActivityRegistrar.class);
+                /*Intent re=new Intent(getApplicationContext(), ActivityRegistrar.class);
                 startActivity(re);
-                overridePendingTransition(R.anim.right_in, R.anim.right_out);
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);*/
+
+                Uri intentUri = Uri.parse("geo:41.382,2.170?z=16&q=41.382,2.170(Esta+Es+La+Etiqueta)");
+                Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
+                startActivity(intent);
             }
         });
 
