@@ -5,11 +5,13 @@ public class MedicoModelo {
     private String Nombre;
     private String Especialidad;
     private String Cedula;
+    private String Telefono;
 
-    public MedicoModelo(String nombre, String especialidad, String cedula){
+    public MedicoModelo(String nombre, String especialidad, String cedula, String telefono){
         Nombre=nombre;
         Especialidad=especialidad;
         Cedula=cedula;
+        Telefono = telefono;
     }
 
     public String getNombre() {
@@ -34,5 +36,12 @@ public class MedicoModelo {
 
     public void setCedula(String cedula) {
         Cedula = cedula;
+    }
+
+    public void setTelefono(String telefono){
+        Telefono=telefono;
+    }
+    public String getTelefono(){
+        return Telefono;
     }
 }

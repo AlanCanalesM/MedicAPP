@@ -1,12 +1,17 @@
 package com.example.pruebamoviles;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,19 +27,41 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Medicos extends AppCompatActivity {
+public class Medico_Datos extends AppCompatActivity {
 
-    private RecyclerView recyclerMedicos;
-    private recyclerMedicosAdapter recyclerMedicosAdapter1;
+
+    TextView txtNombre;
+    TextView txtEspecialidad;
+    TextView txtCedula;
+    TextView txtTelefono;
+
+    Button btnLlamar = findViewById(R.id.btnCall);
+    //private RecyclerView recyclerMedicos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medicos);
+        setContentView(R.layout.activity_medico_datos);
 
-        recyclerMedicos=(RecyclerView)findViewById(R.id.recyclerMedicos);
-        recyclerMedicos.setLayoutManager(new LinearLayoutManager(this));
+
+        Bundle bolsa = getIntent().getExtras();
+
+        txtNombre = (TextView) findViewById(R.id.txtNombre);
+        txtNombre.setText(bolsa.getString("nombre"));
+
+        txtEspecialidad =(TextView) findViewById(R.id.txtEspecialidad);
+        txtEspecialidad.setText(bolsa.getString("especialidad"));
+
+        txtCedula =(TextView) findViewById(R.id.txtCedula);
+        txtCedula.setText(bolsa.getString("cedula"));
+
+        txtTelefono =(TextView) findViewById(R.id.txtTelefono);
+        txtTelefono.setText(bolsa.getString("telefono"));
+
+
+
         MostrarMedicos("http://192.168.1.67/MedicApp/mostrarMedicos.php");
+
 
     }
 
@@ -45,39 +72,35 @@ public class Medicos extends AppCompatActivity {
 
             @Override
             public void onResponse(String response) {
+
+
                 try {
                     JSONArray array = new JSONArray(response);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject medico = array.getJSONObject(i);
 
-                        medicos.add(new MedicoModelo(medico.getString(
-                                "Nombre"),
+                        medicos.add(new MedicoModelo(medico.getString("Nombre"),
                                 medico.getString("Especialidad"),
                                 medico.getString("Cedula"),
                                 medico.getString("Telefono")
-                                ));
+                        ));
 
 
 
                     }
 
-                    recyclerMedicosAdapter1 = new recyclerMedicosAdapter(medicos);
-                    recyclerMedicosAdapter1.setOnClickListener(new View.OnClickListener() {
+                    btnLlamar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent=new Intent(getApplicationContext(), Medico_Datos.class);
-                            Bundle bolsa = new Bundle();
-                            bolsa.putString("nombre", medicos.get(recyclerMedicos.getChildAdapterPosition(view)).getNombre());
-                            bolsa.putString("especialidad", medicos.get(recyclerMedicos.getChildAdapterPosition(view)).getEspecialidad());
-                            bolsa.putString("cedula", medicos.get(recyclerMedicos.getChildAdapterPosition(view)).getCedula());
-                            bolsa.putString("telefono", medicos.get(recyclerMedicos.getChildAdapterPosition(view)).getTelefono());
-                            intent.putExtras(bolsa);
-                            startActivity(intent);
-                           // Toast.makeText(Medicos.this, "Datos"+ medicos.get
-                               //      (recyclerMedicos.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
+                            //String phone = "7721414690";
+                            //Intent intent = new Intent(Intent.ACTION_DIAL);
+                            //intent.setData(Uri.parse(phone));
+                            //startActivity(intent);
+                             Toast.makeText(Medico_Datos.this, "Datos"+ medicos.get
+                                 (btnLlamar.getCh).show();
+
                         }
                     });
-                    recyclerMedicos.setAdapter(recyclerMedicosAdapter1);
 
 
                 } catch (JSONException e) {
@@ -94,4 +117,6 @@ public class Medicos extends AppCompatActivity {
         Volley.newRequestQueue(this).add(stringRequest);
 
     }
+
+
 }

@@ -2,4 +2,15 @@
     <string name="app_name">PruebaMoviles</string>
     <string name="title_activity_mapa">Mapa</string>
     <string name="title_activity_mapa_farmacia">MapaFarmacia</string>
+
+
+    //Datos de Medico
+    <string name="DatosTXT">Datos de Medico</string>
+    <string name="idMedicoTextView">ID:</string>
+    <string name="nombreMedicoTextView">NOMBRE:</string>
+    <string name="especialidadMedicoTextView">ESPECIALIDAD:</string>
+    <string name="cedulaMedicoTextView">CEDULA:</string>
+    <string name="telefonoMedicoTextView">TELEFONO:</string>
+    <string name="llamar">Llamar</string>
+    
 </resources>

@@ -9,10 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicosAdapter.ViewHolder> {
+public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicosAdapter.ViewHolder> implements View.OnClickListener {
 
+
+    private  View.OnClickListener listener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{
@@ -47,6 +50,7 @@ public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicos
 
     public List<MedicoModelo> medicoLista;
 
+
     public recyclerMedicosAdapter(List<MedicoModelo> medicoLista) {
         this.medicoLista = medicoLista;
     }
@@ -57,6 +61,7 @@ public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicos
         View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_medicos, viewGroup, false);
         recyclerMedicosAdapter.ViewHolder viewHolder=new recyclerMedicosAdapter.ViewHolder(view);
         //view.setOnClickListener((View.OnClickListener) this);
+        view.setOnClickListener(this);
         return viewHolder;
     }
 
@@ -73,5 +78,18 @@ public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicos
     public int getItemCount() {
         return medicoLista.size();
     }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (listener != null){
+            listener.onClick(view);
+        }
+    }
+
 
 }
