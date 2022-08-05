@@ -1,6 +1,7 @@
 package com.example.pruebamoviles;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,10 +23,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Medicos extends AppCompatActivity {
+public class Medicos extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private RecyclerView recyclerMedicos;
     private recyclerMedicosAdapter recyclerMedicosAdapter1;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class Medicos extends AppCompatActivity {
         recyclerMedicos = (RecyclerView) findViewById(R.id.recyclerMedicos);
         recyclerMedicos.setLayoutManager(new LinearLayoutManager(this));
         MostrarMedicos("http://192.168.100.11/MedicApp/mostrarMedicos.php");
+        searchView=(SearchView) findViewById(R.id.svSearchMed);
+        initListener();
 
     }
 
@@ -92,5 +96,21 @@ public class Medicos extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(stringRequest);
 
+    }
+
+    private void initListener(){
+        searchView.setOnQueryTextListener(this);
+
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        recyclerMedicosAdapter1.filtro(newText);
+        return false;
     }
 }

@@ -17,17 +17,51 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/medicapp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listado de Farmacias"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Listado de Farmacias"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+
+        >
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/svSearchFarm"
+            app:iconifiedByDefault="false"
+            app:queryHint="Buscar"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFarmacias"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
 
 
 

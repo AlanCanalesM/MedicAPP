@@ -3,6 +3,7 @@ package com.example.pruebamoviles;
 import android.content.Intent;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(re);
                 overridePendingTransition(R.anim.right_in, R.anim.right_out);*/
 
-                Uri intentUri = Uri.parse("geo:41.382,2.170?z=16&q=41.382,2.170(Esta+Es+La+Etiqueta)");
+                Uri intentUri = Uri.parse("geo:20.0933376,-98.7365376?z=16&q=20.0933376,-98.7365376(Farmacia+popular)");
                 Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
                 startActivity(intent);
             }

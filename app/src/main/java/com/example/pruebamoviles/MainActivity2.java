@@ -35,7 +35,7 @@ public class MainActivity2 extends AppCompatActivity {
         btnFar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent s=new Intent(getApplicationContext(), MapaFarmacia.class);
+                Intent s=new Intent(getApplicationContext(), Farmacias.class);
                 startActivity(s);
                 overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
             }

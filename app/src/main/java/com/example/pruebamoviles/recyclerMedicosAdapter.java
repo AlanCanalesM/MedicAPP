@@ -1,5 +1,8 @@
 package com.example.pruebamoviles;
 
+import android.app.LauncherActivity;
+import android.content.ClipData;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
 
 public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicosAdapter.ViewHolder> implements View.OnClickListener {
 
@@ -49,10 +54,13 @@ public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicos
     }
 
     public List<MedicoModelo> medicoLista;
+    private List<MedicoModelo> originalMed;
 
 
     public recyclerMedicosAdapter(List<MedicoModelo> medicoLista) {
         this.medicoLista = medicoLista;
+        this.originalMed=new ArrayList<>();
+        originalMed.addAll(medicoLista);
     }
 
     @NonNull
@@ -72,6 +80,30 @@ public class recyclerMedicosAdapter extends RecyclerView.Adapter<recyclerMedicos
         //Glide.with(viewHolder.itemView).load(ensaladaLista.get(i).getImagen()).into(viewHolder.imagenEnsa);
     }
 
+    public void filtro(String strSearch){
+        if(strSearch.length()==0){
+            medicoLista.clear();
+            medicoLista.addAll(originalMed);
+        }else{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                medicoLista.clear();
+               List<MedicoModelo> collect=originalMed.stream().filter(i->i.getEspecialidad().toLowerCase().contains(strSearch))
+                        .collect(Collectors.toList());
+
+
+                medicoLista.addAll(collect);
+            }else{
+                medicoLista.clear();
+                for( MedicoModelo i:originalMed){
+
+                    if(i.getNombre().toLowerCase().contains(strSearch)){
+                        medicoLista.add(i);
+                    }
+
+                }
+            }
+        }
+    }
 
 
     @Override
