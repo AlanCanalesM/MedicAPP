@@ -20,51 +20,43 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ActivityRegistrar extends AppCompatActivity {
+public class AgregarMed extends AppCompatActivity {
 
-    EditText editName,editUser, editPass, editEmail;
-    Button btnRegistrar, btnCancelar;
+    Button btnagregarMed;
+    EditText txtNombre, txtEsp, txtTel, txtCed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.activity_agregar_med);
 
-        editName=(EditText) findViewById(R.id.editName);
-        editUser=(EditText) findViewById(R.id.editUser);
-        editEmail=(EditText) findViewById(R.id.editEmail);
-        editPass=(EditText) findViewById(R.id.editPass);
-        btnRegistrar=(Button) findViewById(R.id.btnRegistrar);
-        //btnCancelar=(Button) findViewById(R.id.btnCancelar);
+        btnagregarMed=(Button) findViewById(R.id.btnAgMed);
+        txtNombre=(EditText)findViewById(R.id.agNombre);
+        txtCed=(EditText)findViewById(R.id.agCedula);
+        txtEsp=(EditText)findViewById(R.id.agEspecialidad);
+        txtTel=(EditText)findViewById(R.id.agTelefono);
 
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        btnagregarMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrar("http://192.168.100.11/medicapp/registrar.php");
+                AgMed("http://192.168.100.11/MedicApp/agregarmed.php");
             }
         });
-
-        /*btnCancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
-        });*/
     }
 
-
-    public void registrar(String URL){
-
+    public void AgMed(String URL){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                Intent ac=new Intent(getApplicationContext(), MainActivity.class);
+                //Intent ac=new Intent(getApplicationContext(), MainActivity.class);
                 Toast.makeText(getApplicationContext(), "Registrado correctamente!", Toast.LENGTH_LONG).show();
-                startActivity(ac);
-                overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                //startActivity(ac);
+                //overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                txtCed.setText("");
+                txtNombre.setText("");
+                txtEsp.setText("");
+                txtTel.setText("");
 
             }
         }, new Response.ErrorListener() {
@@ -77,10 +69,10 @@ public class ActivityRegistrar extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> datos=new HashMap<>();
-                datos.put("nombre", editName.getText().toString());
-                datos.put("username", editUser.getText().toString());
-                datos.put("email", editEmail.getText().toString());
-                datos.put("password", editPass.getText().toString());
+                datos.put("nombre", txtNombre.getText().toString());
+                datos.put("cedula", txtCed.getText().toString());
+                datos.put("telefono", txtTel.getText().toString());
+                datos.put("especialidad", txtEsp.getText().toString());
 
                 return datos;
             }

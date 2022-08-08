@@ -2,7 +2,6 @@ package com.example.pruebamoviles;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,51 +19,44 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ActivityRegistrar extends AppCompatActivity {
+public class AgregarFar extends AppCompatActivity {
 
-    EditText editName,editUser, editPass, editEmail;
-    Button btnRegistrar, btnCancelar;
+    Button btnAgFar;
+    EditText txtNom, txtTel, txtUbi, txtImagen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.activity_agregar_far);
 
-        editName=(EditText) findViewById(R.id.editName);
-        editUser=(EditText) findViewById(R.id.editUser);
-        editEmail=(EditText) findViewById(R.id.editEmail);
-        editPass=(EditText) findViewById(R.id.editPass);
-        btnRegistrar=(Button) findViewById(R.id.btnRegistrar);
-        //btnCancelar=(Button) findViewById(R.id.btnCancelar);
+        btnAgFar=(Button) findViewById(R.id.btnAgFar);
+        txtNom=(EditText) findViewById(R.id.agNombrefar);
+        txtTel=(EditText) findViewById(R.id.agTelefonofar);
+        txtImagen=(EditText) findViewById(R.id.agImagenfar);
+        txtUbi=(EditText) findViewById(R.id.agUbifar);
 
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        btnAgFar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrar("http://192.168.100.11/medicapp/registrar.php");
+                AgFarm("http://192.168.100.11/MedicApp/agregarfarm.php");
             }
         });
-
-        /*btnCancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
-        });*/
     }
 
-
-    public void registrar(String URL){
-
+    public void AgFarm(String URL){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                Intent ac=new Intent(getApplicationContext(), MainActivity.class);
+                //Intent ac=new Intent(getApplicationContext(), MainActivity.class);
                 Toast.makeText(getApplicationContext(), "Registrado correctamente!", Toast.LENGTH_LONG).show();
-                startActivity(ac);
-                overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                //startActivity(ac);
+                //overridePendingTransition(R.anim.left_in, R.anim.left_out);
+
+                txtTel.setText("");
+                txtImagen.setText("");
+                txtUbi.setText("");
+                txtNom.setText("");
 
             }
         }, new Response.ErrorListener() {
@@ -77,10 +69,10 @@ public class ActivityRegistrar extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> datos=new HashMap<>();
-                datos.put("nombre", editName.getText().toString());
-                datos.put("username", editUser.getText().toString());
-                datos.put("email", editEmail.getText().toString());
-                datos.put("password", editPass.getText().toString());
+                datos.put("nombre", txtNom.getText().toString());
+                datos.put("imagen", txtImagen.getText().toString());
+                datos.put("telefono", txtTel.getText().toString());
+                datos.put("ubicacion", txtUbi.getText().toString());
 
                 return datos;
             }
@@ -90,5 +82,6 @@ public class ActivityRegistrar extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
 
 }
