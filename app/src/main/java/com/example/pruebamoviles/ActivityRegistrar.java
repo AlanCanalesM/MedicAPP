@@ -39,7 +39,8 @@ public class ActivityRegistrar extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrar("http://192.168.100.11/medicapp/registrar.php");
+                //registrar("http://192.168.100.11/medicapp/registrar.php"); 192.168.1.68
+                registrar("http://192.168.1.68/medicapp/registrar.php");
             }
         });
 

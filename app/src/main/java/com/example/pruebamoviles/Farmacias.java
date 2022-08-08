@@ -38,7 +38,7 @@ public class Farmacias extends AppCompatActivity {
         recyclerFarmacia=(RecyclerView) findViewById(R.id.recyclerFarmacias);
         recyclerFarmacia.setLayoutManager(new LinearLayoutManager(this));
         searchView=(SearchView)findViewById(R.id.svSearchMed);
-        MostrarFarmacias("http://192.168.100.11/MedicApp/mostrarFarmacias.php");
+        MostrarFarmacias("http://192.168.1.68/MedicApp/mostrarFarmacias.php");
     }
 
     public void MostrarFarmacias(String URL){

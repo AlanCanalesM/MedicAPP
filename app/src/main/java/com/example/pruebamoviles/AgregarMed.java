@@ -39,7 +39,7 @@ public class AgregarMed extends AppCompatActivity {
         btnagregarMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AgMed("http://192.168.100.11/MedicApp/agregarmed.php");
+                AgMed("http://192.168.1.68/MedicApp/agregarmed.php");
             }
         });
     }

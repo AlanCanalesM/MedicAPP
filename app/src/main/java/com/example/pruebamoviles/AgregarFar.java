@@ -38,7 +38,8 @@ public class AgregarFar extends AppCompatActivity {
         btnAgFar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AgFarm("http://192.168.100.11/MedicApp/agregarfarm.php");
+                //AgFarm("http://192.168.100.11/MedicApp/agregarfarm.php");
+                AgFarm("http://192.168.1.68/MedicApp/agregarfarm.php");
             }
         });
     }

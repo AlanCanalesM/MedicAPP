@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btninicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iniciarSesion("http://192.168.100.11/MedicApp/login.php");
+                iniciarSesion("http://192.168.1.68/MedicApp/login.php");
             }
         });
 

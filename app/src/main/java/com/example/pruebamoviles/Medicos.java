@@ -36,7 +36,7 @@ public class Medicos extends AppCompatActivity implements SearchView.OnQueryText
 
         recyclerMedicos = (RecyclerView) findViewById(R.id.recyclerMedicos);
         recyclerMedicos.setLayoutManager(new LinearLayoutManager(this));
-        MostrarMedicos("http://192.168.100.11/MedicApp/mostrarMedicos.php");
+        MostrarMedicos("http://192.168.1.68/MedicApp/mostrarMedicos.php");
         searchView=(SearchView) findViewById(R.id.svSearchMed);
         initListener();
 
