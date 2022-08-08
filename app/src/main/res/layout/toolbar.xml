@@ -17,7 +17,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="25dp"
             android:layout_toEndOf="@+id/left_icon"
             android:textColor="@android:color/white"
             android:textSize="20sp"
@@ -25,10 +26,11 @@
 
         <ImageView
             android:id="@+id/right_icon"
-            android:layout_width="110dp"
-            android:layout_height="34dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-4dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="-280dp"
             android:src="@drawable/header_logo" />
 
     </RelativeLayout>
