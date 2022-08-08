@@ -27,6 +27,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btninicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iniciarSesion("http://192.168.1.68/MedicApp/login.php");
+                iniciarSesion("http://192.168.100.11/MedicApp/login.php");
             }
         });
 
@@ -74,17 +78,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void acticarHuella(){
+    public void acticarHuella(boolean tipo){
         BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Por favor verifica tu huella dactilar")
                 .setDescription("Usar tu autenticacion biometrica es necesaria")
                 .setNegativeButtonText("Cancelar")
                 .build();
-        getPrompt().authenticate(promptInfo);
+        getPrompt(tipo).authenticate(promptInfo);
 
     }
 
-    private BiometricPrompt getPrompt(){
+    private BiometricPrompt getPrompt(boolean tipo){
         Executor executor = ContextCompat.getMainExecutor(this);
         BiometricPrompt.AuthenticationCallback callback = new BiometricPrompt.AuthenticationCallback() {
             @Override
@@ -98,9 +102,16 @@ public class MainActivity extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 notifyUser("Autenticacion exitosa!");
 
-                Intent i = new Intent(getApplicationContext(), MainActivity2.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.right_in, R.anim.right_out);
+                if(tipo==true){
+                    Intent i = new Intent(getApplicationContext(), ActivityAdmin.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
+                }else{
+                    Intent i = new Intent(getApplicationContext(), MainActivity2.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
+                }
+
 
             }
 
@@ -130,7 +141,15 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
 
                 if(!response.isEmpty()){
-                    acticarHuella();
+
+                    if(response.equals("\"admin\"")){
+                        acticarHuella(true);
+                    }else{
+                        acticarHuella(false);
+                    }
+
+
+
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Credenciales erroneas", Toast.LENGTH_LONG).show();
