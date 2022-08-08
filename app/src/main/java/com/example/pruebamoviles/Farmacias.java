@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -74,7 +75,12 @@ public class Farmacias extends AppCompatActivity {
                             bolsa.putString("telefono", medicos.get(recyclerMedicos.getChildAdapterPosition(view)).getTelefono());
                             intent.putExtras(bolsa);*/
                             //startActivity(intent);
-                            Toast.makeText(getApplicationContext(), "Nombre: "+ farmacias.get(recyclerFarmacia.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
+                            String nombre = farmacias.get(recyclerFarmacia.getChildAdapterPosition(view)).getNombre().toString();
+                            String ubicacion=farmacias.get(recyclerFarmacia.getChildAdapterPosition(view)).getUbicacion().toString();
+                            //Toast.makeText(getApplicationContext(), "Nombre: "+ farmacias.get(recyclerFarmacia.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
+                            Uri intentUri = Uri.parse("geo:"+ ubicacion+"?z=16&q="+ubicacion+"("+nombre+")");
+                Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
+                startActivity(intent);
                         }
                     });
                     recyclerFarmacia.setAdapter(recyclerFarmaciasAdapter);

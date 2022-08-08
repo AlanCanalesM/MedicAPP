@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         btnregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent re=new Intent(getApplicationContext(), ActivityRegistrar.class);
+                Intent re=new Intent(getApplicationContext(), ActivityRegistrar.class);
                 startActivity(re);
-                overridePendingTransition(R.anim.right_in, R.anim.right_out);*/
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);
 
-                Uri intentUri = Uri.parse("geo:20.0933376,-98.7365376?z=16&q=20.0933376,-98.7365376(Farmacia+popular)");
+                /*Uri intentUri = Uri.parse("geo:20.0933376,-98.7365376?z=16&q=20.0933376,-98.7365376(Farmacia+popular)");
                 Intent intent = new Intent(Intent.ACTION_VIEW, intentUri);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
 
