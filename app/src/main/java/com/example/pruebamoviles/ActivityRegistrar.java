@@ -43,7 +43,7 @@ public class ActivityRegistrar extends AppCompatActivity {
             }
         });
 
-        btnCancelar.setOnClickListener(new View.OnClickListener() {
+        /*btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
@@ -51,7 +51,7 @@ public class ActivityRegistrar extends AppCompatActivity {
 
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
-        });
+        });*/
     }
 
 
