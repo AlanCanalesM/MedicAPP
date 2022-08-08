@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <include layout = "@layout/toolbar"/>
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="68dp"
         android:text="Lista Medicos"
         android:textColor="#FF0000"
         android:textSize="35sp"
@@ -20,8 +21,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listRecyclerView"
-        android:layout_width="409dp"
-        android:layout_height="662dp"
+        android:layout_width="422dp"
+        android:layout_height="620dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="1dp"
@@ -29,5 +30,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

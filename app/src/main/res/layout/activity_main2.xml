@@ -6,51 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2"
     android:orientation="vertical">
+    <include layout = "@layout/toolbar"/>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:gravity="center">
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/medicapp"
-        android:layout_gravity="left"
-
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="MedicApp"
-        android:textSize="50dp"
-        android:layout_gravity="center"/>
-
-</LinearLayout>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.rey.material.widget.Button
-    android:id="@+id/BTfarmacias"
-    style="@style/ToolbarRippleStyle"
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    android:background="#4bcbcc"
-    android:text="Farmacias"
-    android:textColor="@color/black"
+        android:id="@+id/BTfarmacias"
+        style="@style/ToolbarRippleStyle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-    />
+        android:layout_marginTop="200dp"
+        android:background="@drawable/button_rounded"
+        android:text="Farmacias"
+        android:textColor="@color/white" />
+
     <com.rey.material.widget.Button
         android:id="@+id/BTmedico"
         style="@style/ToolbarRippleStyle"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:background="#4bcbcc"
         android:text="Medicos"
-        android:textColor="@color/black"
+        android:background="@drawable/button_rounded"
+        android:textColor="@color/white"
         android:layout_gravity="center"
         android:layout_marginTop="150dp"
         />
+</LinearLayout>
+
 
 
 </LinearLayout>

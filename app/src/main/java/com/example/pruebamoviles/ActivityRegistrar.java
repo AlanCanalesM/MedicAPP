@@ -34,12 +34,12 @@ public class ActivityRegistrar extends AppCompatActivity {
         editEmail=(EditText) findViewById(R.id.editEmail);
         editPass=(EditText) findViewById(R.id.editPass);
         btnRegistrar=(Button) findViewById(R.id.btnRegistrar);
-        btnCancelar=(Button) findViewById(R.id.btnCancelar);
+        //btnCancelar=(Button) findViewById(R.id.btnCancelar);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrar("http://192.168.100.11/medicapp/registrar.php");
+                registrar("http://192.168.1.68/medicapp/registrar.php");
             }
         });
 

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#202732">
-
+    android:background="@android:color/white">
+<include layout = "@layout/toolbar"/>
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,13 +19,19 @@
     <EditText
         android:id="@+id/editName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_people_icon"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:textSize="18dp"
         android:hint="Nombre-Apellido"
+        android:drawablePadding="12dp"
+        android:inputType="textPersonName"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:textColor="#FFFFFF"
         android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,10 +41,16 @@
     <EditText
         android:id="@+id/editUser"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:drawableStart="@drawable/custom_person_icon"
+        android:textSize="18dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Username"
@@ -51,7 +63,13 @@
     <EditText
         android:id="@+id/editPass"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/custom_lock_icon"
+        android:textSize="18dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
@@ -67,7 +85,13 @@
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/custom_email_icon"
+        android:textSize="18dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
@@ -93,13 +117,5 @@
         app:layout_constraintTop_toBottomOf="@+id/editEmail"
         android:background="@drawable/button_rounded"/>
 
-    <Button
-        android:id="@+id/btnCancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_cancel_rounded"
-        android:text="Cancelar"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="601dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
