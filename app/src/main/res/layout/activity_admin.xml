@@ -13,11 +13,6 @@
         android:layout_height="318dp"
         android:orientation="vertical"
         android:background="@drawable/farmacias">
-
-
-
-
-
     </LinearLayout>
     <LinearLayout
         android:id="@+id/layoutmed"
